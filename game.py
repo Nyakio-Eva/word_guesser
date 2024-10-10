@@ -31,12 +31,12 @@ def guessing_game():
 def check_guess(word_to_guess, guess, misplaced_guesses, incorrect_guesses):
     current_position = 0
     for i in range(len(guess)):
-        if guess[i] in word_to_guess[i]:
+        if guess[i] == word_to_guess[i]:
             print(guess[i], end=" ")
             current_position +=1
         elif guess[i] in word_to_guess:
-            # if guess[i] in misplaced_guesses:
-            #     misplaced_guesses.remove(guess[i])
+            if guess[i] == misplaced_guesses:
+                misplaced_guesses.remove(guess[i])
                 if guess[i] not in misplaced_guesses:
                     misplaced_guesses.append(guess[i])
                 print("_", end=" ")
@@ -57,7 +57,7 @@ def check_guess(word_to_guess, guess, misplaced_guesses, incorrect_guesses):
 #game loop
 while turns_taken < max_turns:
     guess = guessing_game()
-    turns_taken =+1
+    turns_taken +=1
     
     if check_guess(word_to_guess,guess, misplaced_guesses, incorrect_guesses):
         print("Congrats you won!")
